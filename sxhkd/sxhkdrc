@@ -11,7 +11,7 @@ super + f
     exo-open --launch FileManager
 
 # bsp-layout 
-super + shift + l
+super + alt + l
     bsp-layout cycle --layouts even,tall,wide,tiled
 
 # program launcher
@@ -79,8 +79,12 @@ super + bracket{left,right}
     bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
+super + Tab
     bspc {node,desktop} -f last
+
+# open up rofi show window
+super + grave
+    rofi -show window
 
 # focus the older or newer node in the focus history
 super + {o,i}

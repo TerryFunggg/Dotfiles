@@ -27,8 +27,10 @@ set fileencodings=utf-8
 set encoding=utf-8
 "set title
 set autoindent
-set background=dark
+"set background=dark
 set nobackup
+" replaced by lightline
+set noshowmode
 set hlsearch
 set showcmd
 set cmdheight=1
@@ -52,6 +54,12 @@ if has('nvim')
 endif
 
 colorscheme ghdark 
+let g:gh_color = "soft"
+let g:lightline = {
+      \ 'colorscheme': 'ghdark',
+      \ }
+
+
 
 " Keybindings
 inoremap jk <esc>

@@ -6,3 +6,5 @@ repo = 'itchyny/lightline.vim'
 repo = 'wojciechkepka/vim-github-dark'
 [[plugins]]
 repo = 'tpope/vim-surround'
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'

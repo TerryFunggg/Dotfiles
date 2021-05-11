@@ -8,3 +8,5 @@ repo = 'wojciechkepka/vim-github-dark'
 repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
+[[plugins]]
+repo = 'easymotion/vim-easymotion'

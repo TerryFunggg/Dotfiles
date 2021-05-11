@@ -18,29 +18,50 @@ endif
 
 filetype plugin indent on
 
+set nocompatible
+set lazyredraw
+set nobackup
+set wildmenu
 
+" UI
+set ruler
 set cursorline
 set number
-set nocompatible
-syntax enable
-set fileencodings=utf-8
-set encoding=utf-8
-"set title
-set autoindent
-"set background=dark
-set nobackup
-" replaced by lightline
-set noshowmode
-set hlsearch
+set noshowmode " replaced by lightline
 set showcmd
 set cmdheight=1
 set laststatus=2
 set scrolloff=10
-set expandtab
-set lazyredraw
-"set mat=2
-" Ignore case when searching
+set display=lastline
+
+"
+" File
+"
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
+set ffs=unix,dos,mac
+
+" Syntax
+syntax enable
+syntax on
+
+
+" Search
+"
 set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+" Brackets highlight
+set showmatch
+set matchtime=2
+
+" Tab config
+set autoindent
+set expandtab
+"set mat=2
 set smarttab
 set shiftwidth=2
 set tabstop=2
@@ -53,6 +74,8 @@ if has('nvim')
   set inccommand=split
 endif
 
+" Theme
+set t_Co=256
 colorscheme ghdark 
 let g:gh_color = "soft"
 let g:lightline = {
@@ -62,7 +85,9 @@ let g:lightline = {
 
 
 " Keybindings
-inoremap jk <esc>
 nnoremap <leader>a ^
 nnoremap <leader>e $
 
+inoremap <c-a> <home>
+inoremap <c-e> <end>
+inoremap <c-d> <del>

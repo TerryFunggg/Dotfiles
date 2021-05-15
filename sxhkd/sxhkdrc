@@ -1,4 +1,4 @@
-# web browser
+u web browser
 super + w
     exo-open --launch WebBrowser
 
@@ -11,12 +11,16 @@ super + f
     exo-open --launch FileManager
 
 # bsp-layout 
-super + alt + l
-    bsp-layout cycle --layouts even,tall,wide,tiled
+#super + alt + l
+#    bsp-layout cycle --layouts even,tall,wide,tiled
 
-# program launcher
+# change wallpaper
+super + shift + b
+    nitrogen --random --set-scaled    
+
+# switch layout 
 super + @space
-    rofi_run -r
+    bsp-layout cycle
 
 # program launcher
 alt + F1

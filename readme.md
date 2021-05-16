@@ -7,6 +7,8 @@ Thanks of those wonderful tools and contributors
 |---|---|
 | bspwm | window manager |
 | [bspwm layout](https://github.com/phenax/bsp-layout) | manage layouts in bspwm |
+| picom | blur,opacity effect of your windows |
+| [jonaburg/picom](https://github.com/jonaburg/picom) | fork picom, have transition anime |
 | Urxvt | terminal |
 | ranger | file manager in terminal |
 | [ranger_divicons](https://github.com/alexanderjeurissen/ranger_devicons) | display icon in ranger |

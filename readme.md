@@ -18,4 +18,6 @@ Thanks of those wonderful tools and contributors
 | nitrogen | manage wallpaper | 
 | cmus | simple terminal music player | 
 | [cli-visualizer](https://github.com/dpayne/cli-visualizer) | CLI based audio visualizer |
+| rofi | appliction launcher |
+| [rofi_theme](https://github.com/adi1090x/rofi) | A large collection rofi theme | 
 

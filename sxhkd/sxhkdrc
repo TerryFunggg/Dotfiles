@@ -1,4 +1,4 @@
-u web browser
+# web browser
 super + w
     exo-open --launch WebBrowser
 
@@ -10,10 +10,6 @@ super + Return
 super + f
     exo-open --launch FileManager
 
-# bsp-layout 
-#super + alt + l
-#    bsp-layout cycle --layouts even,tall,wide,tiled
-
 # change wallpaper
 super + shift + b
     nitrogen --random --set-scaled    
@@ -24,15 +20,24 @@ super + @space
 
 # program launcher
 alt + F1
-    rofi_run -r
+    ~/.config/rofi/bin/launcher_misc
+    #rofi_run -r
 
 # make sxhkd reload its configuration files:
 super + shift + r
     pkill -USR1 -x sxhkd
 
+#require the model from https://github.com/adi1090x/rofi
 # quit bspwm normally
 super + x
-    rofi_run -l
+    ~/.config/rofi/bin/applet_powermenu
+    #rofi_run -l
+
+super + F4
+    ~/.config/rofi/bin/android_screenshot
+
+super + F10
+    ~/.config/rofi/bin/android_quicklinks
 
 # close and kill
 super + {_,shift + }q

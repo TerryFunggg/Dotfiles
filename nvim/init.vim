@@ -26,14 +26,14 @@ set wildmenu
 " UI
 set ruler
 set cursorline
-set number
+set number relativenumber
+set nu rnu
 set noshowmode " replaced by lightline
 set showcmd
 set cmdheight=1
 set laststatus=2
 set scrolloff=10
 set display=lastline
-
 "
 " File
 "
@@ -77,6 +77,7 @@ endif
 " Theme
 set t_Co=256
 colorscheme ghdark 
+set background=light
 let g:gh_color = "soft"
 let g:lightline = {
       \ 'colorscheme': 'ghdark',

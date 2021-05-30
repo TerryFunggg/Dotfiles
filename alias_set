@@ -1,0 +1,20 @@
+alias la='ls -Ah'
+alias ll='ls -lAh'
+alias grep='grep --color=auto'
+alias grepa='grep --color=auto -A 5'
+alias cp='cp -iv'
+alias du='du -h'
+alias mysqli="mycli mysql://root@127.0.0.1:3307"
+alias socks="http_proxy=http://128.0.0.1:8001 \
+	https_proxy=http://127.0.0.1:8001"
+alias network="nmtui"
+alias battery="acpi -bat"
+alias sound="pulsemixer"
+alias tops="ps -eo pid,ppid,%mem,%cpu,comm --sort=-%cpu | head"
+alias chrome="google-chrome-stable --proxy-server=http://127.0.0.1:8001"
+alias php="/opt/lampp/bin/php"
+alias money="hledger-ui"
+alias hh="history"
+alias screenkey="screenkey -p fixed -g 90%x10%+5%-15% --opacity 0.4"
+alias weather="curl wttr.in"
+alias vim="nvim"

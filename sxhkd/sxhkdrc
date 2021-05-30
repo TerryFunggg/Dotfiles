@@ -12,7 +12,9 @@ super + f
 
 # change wallpaper
 super + shift + b
-    nitrogen --random --set-scaled    
+    wal -i /home/terryfung/wallpapers -a "80" -q
+    #nitrogen --random --set-scaled    
+
 
 # switch layout 
 super + @space
@@ -20,7 +22,8 @@ super + @space
 
 # program launcher
 alt + F1
-    ~/.config/rofi/bin/launcher_misc
+    dmenu_run -i -fn "Source Code Pro:12" -l 10 -p "App:"
+    #~/.config/rofi/bin/launcher_ribbon
     #rofi_run -r
 
 # make sxhkd reload its configuration files:
@@ -38,6 +41,9 @@ super + F4
 
 super + F10
     ~/.config/rofi/bin/android_quicklinks
+
+super + F12
+    ~/.script/dmenu/kill-process.sh
 
 # close and kill
 super + {_,shift + }q
@@ -93,7 +99,8 @@ super + Tab
 
 # open up rofi show window
 super + grave
-    rofi -show window
+    ~/.config/rofi/bin/launcher_misc
+    #rofi -show window
 
 # focus the older or newer node in the focus history
 super + {o,i}

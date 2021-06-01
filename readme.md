@@ -20,4 +20,5 @@ Thanks of those wonderful tools and contributors
 | [cli-visualizer](https://github.com/dpayne/cli-visualizer) | CLI based audio visualizer |
 | rofi | appliction launcher |
 | [rofi_theme](https://github.com/adi1090x/rofi) | A large collection rofi theme | 
-
+| zathura | simple pdf view with vi keybindings and pipe with |
+| [wal/pywal](https://github.com/dylanaraps/pywal) | Generate and change color-schemes by given image.| 

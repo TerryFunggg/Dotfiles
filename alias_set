@@ -1,7 +1,7 @@
 alias la='ls -Ah'
 alias ll='ls -lAh'
-alias grep='grep --color=auto'
-alias grepa='grep --color=auto -A 5'
+alias grep='grep --color=auto -i'
+alias grepa='grep --color=auto -i -A 5'
 alias cp='cp -iv'
 alias du='du -h'
 alias mysqli="mycli mysql://root@127.0.0.1:3307"

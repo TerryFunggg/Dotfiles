@@ -1,5 +1,6 @@
 alias la='ls -Ah'
 alias ll='ls -lAh'
+alias ls="ls -C"
 alias grep='grep --color=auto -i'
 alias grepa='grep --color=auto -i -A 5'
 alias cp='cp -iv'

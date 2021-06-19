@@ -1,6 +1,6 @@
 alias la='ls -Ah'
 alias ll='ls -lAh'
-alias ls="ls -C"
+alias ls="ls -C --color=auto"
 alias grep='grep --color=auto -i'
 alias grepa='grep --color=auto -i -A 5'
 alias cp='cp -iv'
@@ -13,7 +13,7 @@ alias battery="acpi -bat"
 alias sound="pulsemixer"
 alias tops="ps -eo pid,ppid,%mem,%cpu,comm --sort=-%cpu | head"
 alias chrome="google-chrome-stable --proxy-server=http://127.0.0.1:8001"
-alias php="/opt/lampp/bin/php"
+#alias php="/opt/lampp/bin/php"
 alias money="hledger-ui"
 alias hh="history"
 alias screenkey="screenkey -p fixed -g 90%x10%+5%-15% --opacity 0.4"

@@ -4,10 +4,13 @@
 clear Control
 clear Shift
 clear Lock
+clear mod4
 
-keycode 37 = Escape
+keycode 37 = Shift_L
 keycode 50 = Control_L
-keycode 9 = Shift_L
+keycode 9 = Caps_Lock
+keycode 134 = Escape
 
 add Control = Control_L
 add Shift = Shift_R
+add mod4 = Super_L Hyper_L

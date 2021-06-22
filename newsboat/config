@@ -1,0 +1,8 @@
+# theme
+include /usr/share/doc/newsboat/contrib/colorschemes/inkpot
+
+# reload all feed when startup
+auto-reload yes
+
+bind-key k up
+bind-key j down

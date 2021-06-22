@@ -4,6 +4,7 @@ alias ls="ls -C --color=auto"
 alias grep='grep --color=auto -i'
 alias grepa='grep --color=auto -i -A 5'
 alias cp='cp -iv'
+alias diff='diff --color=auto'
 alias du='du -h'
 alias mysqli="mycli mysql://root@127.0.0.1:3307"
 alias socks="http_proxy=http://128.0.0.1:8001 \
@@ -19,4 +20,4 @@ alias hh="history"
 alias screenkey="screenkey -p fixed -g 90%x10%+5%-15% --opacity 0.4"
 alias weather="curl wttr.in"
 alias vim="nvim"
-alias fzf="fzf --height=20% --layout=reverse"
+alias fzf="fzf --height=20% --layout=reverse --preview='cat {}'"

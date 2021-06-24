@@ -22,3 +22,4 @@ Thanks of those wonderful tools and contributors
 | [rofi_theme](https://github.com/adi1090x/rofi) | A large collection rofi theme | 
 | zathura | simple pdf view with vi keybindings and pipe with |
 | [wal/pywal](https://github.com/dylanaraps/pywal) | Generate and change color-schemes by given image.| 
+| [newsboat]() | Rss feed reader in terminals | 

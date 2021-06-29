@@ -1,0 +1,17 @@
+#!/bin/sh
+# status : Discharging
+
+check_battery_status()
+{
+  case "$1" in
+    "Discharging,")
+      return 0;;
+      *)
+        return 1;;
+    esac
+}
+
+if check_battery_status "$( acpi | cut -d ' ' -f 3 )"; then
+  echo "$(acpi | cut -d ' ' -f 5)"
+fi
+exit 0

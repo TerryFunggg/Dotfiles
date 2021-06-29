@@ -1,7 +1,7 @@
 # My conky theme
 
 #### Screenshort
-![sds](Screenshort.png)
+![screenshort](Screenshot.png)
 
 #### Font used
 

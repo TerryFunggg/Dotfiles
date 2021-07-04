@@ -12,6 +12,6 @@ check_battery_status()
 }
 
 if check_battery_status "$( acpi | cut -d ' ' -f 3 )"; then
-  echo "$(acpi | cut -d ' ' -f 5)"
+  echo "$(acpi | cut -d ' ' -f 3,5)"
 fi
 exit 0

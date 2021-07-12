@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# search file and open with default editor
+# require: fzf
+finder()
+{
+  du -a $1 | awk '{print $2}' | fzf | xargs -r $EDITOR
+}
+
+# jump into directory by given keywords & print current directory at the end
+j()
+{
+  cd $(jump cd $1)
+  pwd
+}

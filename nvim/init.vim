@@ -90,9 +90,14 @@ set t_Co=256
 nnoremap <leader>a ^
 nnoremap <leader>e $
 
+" insert Mode
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-d> <del>
+inoremap <c-b> <Left>
+inoremap <c-f> <Right>
+inoremap <c-p> <Up>
+inoremap <c-n> <Down>
 
 :map <F7> :w !xclip<CR><CR>
 :vmap <F7> "*y

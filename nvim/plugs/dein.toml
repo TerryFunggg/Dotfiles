@@ -30,3 +30,5 @@ repo = 'vim-airline/vim-airline-themes'
 repo = 'scrooloose/nerdtree'
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+[[plugins]]
+repo = 'mileszs/ack.vim'

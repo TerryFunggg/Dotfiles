@@ -32,7 +32,7 @@ set nu rnu
 "set noshowmode " replaced by lightline
 set showcmd
 set cmdheight=1
-set laststatus=0
+set laststatus=2
 set scrolloff=10
 set display=lastline
 "
@@ -112,6 +112,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " jedi-vim config
 " disable autocompletion, because we use deoplete for completion
 let g:jedi#completions_enabled = 0
+set splitbelow
 " open the go-to function in split, not another buffer
 "let g:jedi#use_splits_not_buffers = "right"
 
@@ -120,3 +121,9 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 "NERDTree config
 nnoremap <C-t> :NERDTreeToggle<CR>
+
+" ack config
+if executable('ag')
+  " change search engine to ag
+  let g:ackprg = 'ag --vimgrep'
+endif

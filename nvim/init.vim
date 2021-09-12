@@ -1,3 +1,78 @@
+" Vim Init "{{{
+" ---------------------------------------------------------------------
+autocmd!
+scriptencoding utf-8
+set shell=zsh
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
+set ffs=unix,dos,mac
+filetype plugin indent on
+syntax enable
+syntax on
+set nocompatible
+set lazyredraw
+set nobackup
+set backupskip=/tmp/*,/private/tmp/*
+set wildmenu
+set ruler
+set cursorline
+set number relativenumber
+set nu rnu
+"set noshowmode " replaced by lightline
+set showcmd
+set cmdheight=1
+set laststatus=2
+set scrolloff=10
+set display=lastline
+set title
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set showmatch
+set matchtime=2
+set autoindent
+set expandtab
+"set mat=2
+set smarttab
+set shiftwidth=2
+set tabstop=2
+set ai "Auto indent
+set si "Smart indent
+set nowrap "No Wrap lines
+set backspace=start,eol,indent
+" Finding files - Search down into subfolders
+set path+=**
+set wildignore+=*/node_modules/*
+
+if has('nvim')
+  set inccommand=split
+endif
+"}}}
+
+" File types "{{{
+" ---------------------------------------------------------------------
+" JavaScript
+au BufNewFile,BufRead *.es6 setf javascript
+" TypeScript
+au BufNewFile,BufRead *.tsx setf typescriptreact
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+" Flow
+au BufNewFile,BufRead *.flow set filetype=javascript
+
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+
+autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
+"}}}
+
+" DeinInit "{{{
+" ---------------------------------------------------------------------
+
 let s:dein_dir = expand('~/.nvim/dein')
 set runtimepath+=~/.nvim/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state(s:dein_dir)
@@ -17,101 +92,44 @@ if dein#check_install()
   call dein#install()
 endif
 
-filetype plugin indent on
+"}}}
 
-set nocompatible
-set lazyredraw
-set nobackup
-set wildmenu
-
-" UI
-set ruler
-set cursorline
-set number relativenumber
-set nu rnu
-"set noshowmode " replaced by lightline
-set showcmd
-set cmdheight=1
-set laststatus=2
-set scrolloff=10
-set display=lastline
-"
-" File
-"
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
-set ffs=unix,dos,mac
-
-" Syntax
-syntax enable
-syntax on
+" Keymaps {{{
+" ---------------------------------------------------------------------
+if has("unix")
+  let s:uname = system("uname -s")
+  " If macos, add some stuffs
+  if s:uname == "Darwin\n"
+    runtime ./macos.vim
+  endif
+endif
+" import key maps
+runtime ./maps.vim
+"}}}
 
 
-" Search
-"
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-
-" Brackets highlight
-set showmatch
-set matchtime=2
-
-" Tab config
-set autoindent
-set expandtab
-"set mat=2
-set smarttab
-set shiftwidth=2
-set tabstop=2
-set ai "Auto indent
-set si "Smart indent
-set nowrap "No Wrap lines
-set backspace=start,eol,indent
-
-if has('nvim')
-  set inccommand=split
+" Theme "{{{
+" ---------------------------------------------------------------------
+" true color
+if exists("&termguicolors") && exists("&winblend")
+  " set t_Co=256
+  syntax enable
+  set termguicolors
+  set winblend=0
+  set wildoptions=pum
+  set pumblend=5
+  set background=dark
+  " Use NeoSolarized
+  let g:neosolarized_termtrans=1
+  runtime ./colors/NeoSolarized.vim
+  colorscheme NeoSolarized
 endif
 
-" Theme
-set t_Co=256
-"colorscheme ghdark 
-"set background=light
-"let g:gh_color = "soft"
-"let g:lightline = {
-      "\ 'colorscheme': 'ghdark',
-      "\ }
+"}}}
 
 
-
-" Keybindings
-nnoremap <leader>a ^
-nnoremap <leader>e $
-
-" insert Mode
-inoremap <c-a> <home>
-inoremap <c-e> <end>
-inoremap <c-d> <del>
-inoremap <c-b> <Left>
-inoremap <c-f> <Right>
-inoremap <c-p> <Up>
-inoremap <c-n> <Down>
-
-:map <F7> :w !xclip<CR><CR>
-:vmap <F7> "*y
-:map <S-F7> :r!xclip -o<CR>
-
-" Deoplete config
-let g:deoplete#enable_at_startup = 1
-" Close the top preview window automatically
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-" jedi-vim config
-" disable autocompletion, because we use deoplete for completion
-let g:jedi#completions_enabled = 0
+" Other "{{{
+" ---------------------------------------------------------------------
 set splitbelow
 " open the go-to function in split, not another buffer
 "let g:jedi#use_splits_not_buffers = "right"
@@ -126,4 +144,9 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 if executable('ag')
   " change search engine to ag
   let g:ackprg = 'ag --vimgrep'
+  nmap sp :Ack
 endif
+"}}}
+
+
+" vim: set foldmethod=marker foldlevel=0:

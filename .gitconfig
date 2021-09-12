@@ -42,17 +42,8 @@
 [diff]
   tool = nvimdiff
 [difftool "nvimdiff"]
-<<<<<<< HEAD
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-
-=======
-        cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
-        path =
-[mergetool "nvimdiff"]
-        cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-        trustExitCode = true
->>>>>>> 86c5e3e5b5310af5639f826ec21d87ec7ddf2253

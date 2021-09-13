@@ -13,3 +13,17 @@ j()
   cd $(jump cd $1)
   pwd
 }
+
+# Search file
+# required fd, peco
+op()
+{
+ fd "$1" | peco | xargs $EDITOR 
+}
+
+# Search code/text
+# required ag, peco
+sc()
+{
+  ag "$1" | peco | awk -F : '{print "+"$2" "$1}' | xargs nvim
+}

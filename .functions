@@ -25,5 +25,5 @@ op()
 # required ag, peco
 sc()
 {
-  ag "$1" | peco | awk -F : '{print "+"$2" "$1}' | xargs nvim
+  ag "$1" | peco | awk -F : '{print "+"$2" "$1}' | xargs $EDITOR
 }

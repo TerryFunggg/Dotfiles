@@ -51,4 +51,10 @@ repo = 'scrooloose/nerdtree'
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
-repo = 'mileszs/ack.vim'
+repo = 'junegunn/fzf'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = """
+source ~/.config/nvim/after/fzf.rc.vim
+"""

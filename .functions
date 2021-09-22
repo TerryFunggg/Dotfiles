@@ -14,11 +14,18 @@ j()
   pwd
 }
 
-# Search file
+# Search file - Open file
+# If directory have .git, the search results will based on git commit files
+# It good at whatever which sub-directory you are, the result will included all files of current project.
+# else search result by fd command, and it just can recusive search start from current folder
 # required fd, peco
 op()
 {
- fd "$1" | peco | xargs $EDITOR 
+  {
+    git ls-files && git ls-tree --full-name --full-tree -r "$(git branch --show-current)" --name-only "$(git rev-parse --show-toplevel)" | peco | xargs $EDITOR
+  } || {
+    fd "$1" | peco | xargs $EDITOR
+  }
 }
 
 # Search code/text

@@ -14,12 +14,12 @@
 [alias]
   a = "!git status --short | peco | awk '{print $2}' | xargs git add"
   dd = diff
-  co = checkout
-  ci = commit
+  cc = checkout
+  cm = commit
   ca = commit -a
-  cm = commit -m
+  cmm = commit -m
   cb = checkout -b
-  ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+  pp = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
   pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
   ss = status
   bb = branch
@@ -47,3 +47,4 @@
 [mergetool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+

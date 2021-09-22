@@ -22,7 +22,7 @@ j()
 op()
 {
   {
-    git ls-files && git ls-tree --full-name --full-tree -r "$(git branch --show-current)" --name-only "$(git rev-parse --show-toplevel)" | peco | xargs $EDITOR
+    git ls-files 2>/dev/null && git ls-tree --full-name --full-tree -r "$(git branch --show-current)" --name-only "$(git rev-parse --show-toplevel)/" | peco | awk -v path="$(git rev-parse --show-toplevel)/" '{print path $1}' | xargs $EDITOR
   } || {
     fd "$1" | peco | xargs $EDITOR
   }

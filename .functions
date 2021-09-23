@@ -32,5 +32,9 @@ op()
 # required ag, peco
 sc()
 {
-  ag "$1" | peco | awk -F : '{print "+"$2" "$1}' | xargs $EDITOR
+  {
+    git ls-files 2>/dev/null && git rev-parse --show-toplevel | xargs ag "$1" {} | peco | awk -F : '{print "+"$2" "$1}' | xargs $EDITOR
+  } || {
+    ag "$1" | peco | awk -F : '{print "+"$2" "$1}' | xargs $EDITOR
+  }
 }

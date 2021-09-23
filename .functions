@@ -18,7 +18,7 @@ j()
 # If directory have .git, the search results will based on git commit files
 # It good at whatever which sub-directory you are, the result will included all files of current project.
 # else search result by fd command, and it just can recusive search start from current folder
-# required fd, peco
+# required git, fd, peco
 op()
 {
   {
@@ -29,7 +29,7 @@ op()
 }
 
 # Search code/text
-# required ag, peco
+# required git,ag, peco
 sc()
 {
   {

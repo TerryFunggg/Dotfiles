@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Installtaion
+# I usually put this file in $HOME dir, and the line below into .zshrc or bashrc
+# source $HOME/.functions
+
 # search file and open with default editor
 # require: fzf
 finder()

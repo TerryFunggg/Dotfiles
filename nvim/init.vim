@@ -117,7 +117,7 @@ if exists("&termguicolors") && exists("&winblend")
   set winblend=0
   set wildoptions=pum
   set pumblend=5
-  set background=dark
+  set background=light
   " Use NeoSolarized
   let g:neosolarized_termtrans=1
   runtime ./colors/NeoSolarized.vim
@@ -146,5 +146,12 @@ if executable('ag')
 endif
 "}}}
 
+" Folding "{{{
+" ---------------------------------------------------------------------
+set foldmethod=syntax
+set foldcolumn=1
+let javaScript_fold=1
+nnoremap <Space><Space> zA
 
 " vim: set foldmethod=marker foldlevel=0:
+"}}}

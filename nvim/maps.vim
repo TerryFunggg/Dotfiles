@@ -45,3 +45,5 @@ nmap sw<down> <C-w>-
 
 nmap sq :close<Return>
 
+" Clean Seach lighline
+nnoremap <ESC> :noh<Return>

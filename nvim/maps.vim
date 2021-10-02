@@ -27,7 +27,7 @@ nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
 
 " Move window
-nmap <Space> <C-w>w
+nmap <Space>w <C-w>w
 map s<left> <C-w>h
 map s<up> <C-w>k
 map s<down> <C-w>j
@@ -47,3 +47,6 @@ nmap sq :close<Return>
 
 " Clean Seach lighline
 nnoremap <ESC> :noh<Return>
+
+" Exits mode and save file
+inoremap <C-[> <Esc>:w<Return>

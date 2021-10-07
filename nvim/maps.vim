@@ -49,4 +49,4 @@ nmap sq :close<Return>
 nnoremap <ESC> :noh<Return>
 
 " Exits mode and save file
-inoremap <C-[> <Esc>:w<Return>
+"inoremap <C-[> <Esc>:w<Return>

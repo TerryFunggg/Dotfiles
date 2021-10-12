@@ -42,3 +42,8 @@ sc()
     ag "$1" | peco | awk -F : '{print "+"$2" "$1}' | xargs $EDITOR
   }
 }
+
+localftp()
+{
+  sudo python -m http.server 80
+}

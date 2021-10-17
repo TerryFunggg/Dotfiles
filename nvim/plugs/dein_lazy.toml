@@ -32,4 +32,4 @@ on_ft = ['javascript', 'javascript.jsx']
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['html']
+on_ft = ['html', 'eruby']

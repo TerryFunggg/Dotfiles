@@ -50,3 +50,6 @@ nnoremap <ESC> :noh<Return>
 
 " Exits mode and save file
 "inoremap <C-[> <Esc>:w<Return>
+
+" Emmet expand
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")

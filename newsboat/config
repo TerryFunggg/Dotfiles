@@ -1,8 +1,12 @@
 # theme
-include /usr/share/doc/newsboat/contrib/colorschemes/inkpot
+include /usr/share/doc/newsboat/contrib/colorschemes/kinda-maia
 
 # reload all feed when startup
-auto-reload yes
+auto-reload no
 
+# keybinding
 bind-key k up
 bind-key j down
+
+# open url with firefox
+browser "firefox %u"

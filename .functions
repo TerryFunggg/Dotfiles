@@ -47,3 +47,8 @@ localftp()
 {
   sudo python -m http.server 80
 }
+
+emacs-server()
+{
+  emacs --fg-daemon
+}

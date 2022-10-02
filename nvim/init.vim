@@ -1,41 +1,52 @@
-" Vim Init "{{{
+" undamentals "{{{
 " ---------------------------------------------------------------------
+
+" init autocmd
 autocmd!
+" set script encoding
 scriptencoding utf-8
-set shell=zsh
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1
-set ffs=unix,dos,mac
-filetype plugin indent on
-syntax enable
-syntax on
+" stop loading config if it's on tiny or small
+if !1 | finish | endif
+
 set nocompatible
-set lazyredraw
+set number
+syntax enable
+set fileencodings=utf-8,sjis,euc-jp,latin
+set encoding=utf-8
+set title
+set autoindent
+set background=dark
 set nobackup
-set backupskip=/tmp/*,/private/tmp/*
-set wildmenu
-set ruler
-set cursorline
-set number relativenumber
-set nu rnu
-"set noshowmode " replaced by lightline
+set hlsearch
 set showcmd
 set cmdheight=1
 set laststatus=2
 set scrolloff=10
-set display=lastline
-set title
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-set showmatch
-set matchtime=2
-set autoindent
 set expandtab
+"let loaded_matchparen = 1
+"set shell=fish
+set backupskip=/tmp/*,/private/tmp/*
+
+" incremental substitution (neovim)
+if has('nvim')
+  set inccommand=split
+endif
+
+" Suppress appending <PasteStart> and <PasteEnd> when pasting
+set t_BE=
+
+set nosc noru nosm
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+"set showmatch
+" How many tenths of a second to blink when matching brackets
 "set mat=2
+" Ignore case when searching
+set ignorecase
+" Be smart when using tabs ;)
 set smarttab
+" indents
+filetype plugin indent on
 set shiftwidth=2
 set tabstop=2
 set ai "Auto indent
@@ -46,9 +57,35 @@ set backspace=start,eol,indent
 set path+=**
 set wildignore+=*/node_modules/*
 
-if has('nvim')
-  set inccommand=split
+" Turn off paste mode when leaving insert
+autocmd InsertLeave * set nopaste
+
+" Add asterisks in block comments
+set formatoptions+=r
+
+"}}}
+
+" Highlights "{{{
+" ---------------------------------------------------------------------
+set cursorline
+"set cursorcolumn
+
+" Set cursor line color on visual mode
+highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
+
+highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+
+augroup BgHighlight
+  autocmd!
+  autocmd WinEnter * set cul
+  autocmd WinLeave * set nocul
+augroup END
+
+if &term =~ "screen"
+  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
+  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
 endif
+
 "}}}
 
 " File types "{{{
@@ -59,8 +96,11 @@ au BufNewFile,BufRead *.es6 setf javascript
 au BufNewFile,BufRead *.tsx setf typescriptreact
 " Markdown
 au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.mdx set filetype=markdown
 " Flow
 au BufNewFile,BufRead *.flow set filetype=javascript
+" Fish
+au BufNewFile,BufRead *.fish set filetype=fish
 
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
@@ -70,88 +110,46 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 "}}}
 
-" DeinInit "{{{
+" Imports "{{{
 " ---------------------------------------------------------------------
-
-let s:dein_dir = expand('~/.nvim/dein')
-set runtimepath+=~/.nvim/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  let g:rc_dir = expand('~/.config/nvim/plugs')
-  let s:toml = g:rc_dir . '/dein.toml'
-  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
-endif
-if dein#check_install()
-  call dein#install()
-endif
-
-"}}}
-
-" Keymaps {{{
-" ---------------------------------------------------------------------
+runtime ./plug.vim
 if has("unix")
   let s:uname = system("uname -s")
-  " If macos, add some stuffs
+  " Do Mac stuff
   if s:uname == "Darwin\n"
     runtime ./macos.vim
   endif
 endif
-" import key maps
+
 runtime ./maps.vim
+runtime ./alias.vim
 "}}}
 
-" Theme "{{{
+" Syntax theme "{{{
 " ---------------------------------------------------------------------
+
 " true color
 if exists("&termguicolors") && exists("&winblend")
-  " set t_Co=256
   syntax enable
   set termguicolors
   set winblend=0
   set wildoptions=pum
   set pumblend=5
-  set background=light
+  set background=dark
   " Use NeoSolarized
-  let g:neosolarized_termtrans=1
-  runtime ./colors/NeoSolarized.vim
-  colorscheme NeoSolarized
+  "let g:neosolarized_termtrans=1
+  "runtime ./colors/NeoSolarized.vim
+  "colorscheme NeoSolarized
+  colorscheme nord
 endif
 
 "}}}
 
-" Other "{{{
+" Extras "{{{
 " ---------------------------------------------------------------------
-set splitbelow
-" open the go-to function in split, not another buffer
-"let g:jedi#use_splits_not_buffers = "right"
-
-"IndentLine config
+set exrc
+set completeopt=menu,menuone,noselect
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-"NERDTree config
-nnoremap <C-t> :NERDTreeToggle<CR>
-
-" ack config
-if executable('ag')
-  " change search engine to ag
-  let g:ackprg = 'ag --vimgrep'
-  nmap sp :Ack
-endif
 "}}}
 
-" Folding "{{{
-" ---------------------------------------------------------------------
-set foldmethod=syntax
-set foldcolumn=1
-let javaScript_fold=1
-nnoremap <Space><Space> zA
-
-" vim: set foldmethod=marker foldlevel=0:
-"}}}
+" vim: set foldmethod=marker foldlevel=0:F

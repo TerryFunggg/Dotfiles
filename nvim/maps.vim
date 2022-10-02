@@ -52,4 +52,4 @@ nnoremap <ESC> :noh<Return>
 "inoremap <C-[> <Esc>:w<Return>
 
 " Emmet expand
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+"imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")

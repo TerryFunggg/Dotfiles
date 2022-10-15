@@ -1,0 +1,2 @@
+#! /bin/sh
+emacsclient -s -q nano -c "$@"

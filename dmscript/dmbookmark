@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+DMEDITOR="emacs"
+DMBROWSER="surf"
+
+declare -a options=(
+    "google - https://google.com"
+    "youtube - https://youtube.com"
+    "TaoBao - https://world.taobao.com"
+    "Github - https://github.com"
+)
+
+choice=$(printf '%s\n' "${options[@]}" | dmenu -i -l 20 -p 'Edit config: ')
+
+if [[ "$choice" == "quit" ]]; then
+    echo "Program terminated." && exit 1
+
+elif [ "$choice" ]; then
+    cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+    $DMBROWSER "$cfg"
+else
+    echo "Program terminated." && exit 1
+fi

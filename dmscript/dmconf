@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+DMEDITOR="emacs"
+
+declare -a options=(
+    "nvim - $HOME/.config/nvim/init.vim"
+    "zshrc - $HOME/.zshrc"
+    "dwm - $HOME/github/dwm/config.def.h"
+)
+
+choice=$(printf '%s\n' "${options[@]}" | dmenu -i -l 20 -p 'Edit config: ')
+
+if [[ "$choice" == "quit" ]]; then
+    echo "Program terminated." && exit 1
+
+elif [ "$choice" ]; then
+    cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+    $DMEDITOR "$cfg"
+else
+    echo "Program terminated." && exit 1
+fi

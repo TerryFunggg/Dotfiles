@@ -1,0 +1,30 @@
+#!/bin/sh
+location='~/project/mybrain'
+session="mybrain-dev"
+
+tmux new-session -d -s $session
+
+window=0
+tmux rename-window -t $session:$window 'rails'
+tmux send-keys     -t $session:$window "cd $location/rails_mybrain" C-m
+tmux send-keys     -t $session:$window "rvm use 3.2.0" C-m
+
+window=1
+tmux new-window -t $session:$window -n "server"
+tmux send-keys  -t $session:$window "cd $location/rails_mybrain" C-m
+tmux send-keys     -t $session:$window "rvm use 3.2.0" C-m
+tmux send-keys  -t $session:$window "./bin/dev" C-m
+
+window=2
+tmux new-window -t $session:$window -n "rails_c"
+tmux send-keys  -t $session:$window "cd $location/rails_mybrain" C-m
+tmux send-keys     -t $session:$window "rvm use 3.2.0" C-m
+tmux send-keys  -t $session:$window "rails c" C-m
+
+#tmux new-window
+#tmux send-keys "cd $(location)/telegram_bot" C-m
+#tmux rename-window "telegram_bot" C-m
+
+# tmux select-pane -t 0
+# Rename window
+tmux attach-session -t $session

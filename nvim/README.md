@@ -1,6 +1,10 @@
 # My neovim configuration
 
-I'm currently using [dein.vim](https://github.com/Shougo/dein.vim) as my vim
+## 2023 update
+Currently using [vim plug](https://github.com/junegunn/vim-plug) as plugin manager. Just follow the Install guide. After that run `PlugInstall`.
+
+# How to install (not work now)
+Using [dein.vim](https://github.com/Shougo/dein.vim) as my vim
 plugin manager. Cuz I found that it support toml format which is really easy to
 manage plugin list.
 

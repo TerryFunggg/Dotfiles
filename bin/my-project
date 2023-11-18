@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+declare -a options=(
+    "MyBrain - /Users/terryfung/project/mybrain_php/"
+)
+
+choice=$(printf '%s\n' "${options[@]}" | peco)
+
+if [[ "$choice" == "quit" ]]; then
+    echo "Program terminated." && exit 1
+
+elif [ "$choice" ]; then
+    name=$(printf '%s\n' "${choice}" | awk '{print $1}')
+    path=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+    cd $path
+    tmux new-session -d -s "$name"
+    tmux rename-window -t $name:0 'Main'
+    tmux split-window -v -p 15 -t $name:Main
+    tmux select-pane -t $name:Main -U
+    tmux send-keys -t $name:Main C-c 'clear' C-m
+    tmux send-keys -t $name:Main C-c 'vim' C-m
+    tmux attach -t $name
+else
+    echo "Program terminated." && exit 1
+fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 declare -a options=(
-    "MyBrain - ~/project/mybrain_php/"
+    "MyBrain - project/mybrain_php/"
 )
 
 choice=$(printf '%s\n' "${options[@]}" | peco)
@@ -11,8 +11,8 @@ if [[ "$choice" == "quit" ]]; then
 
 elif [ "$choice" ]; then
     name=$(printf '%s\n' "${choice}" | awk '{print $1}')
-    path=$(printf '%s\n' "${choice}" | awk '{print $2}')
-    cd $path
+    path=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+    cd "$HOME/$path"
 
     tmux has-session -t "$name" 2>/dev/null
 
@@ -20,12 +20,13 @@ elif [ "$choice" ]; then
         tmux new-session -d -s "$name"
 
         tmux rename-window -t $name:0 'Console'
-        tmux split-window -h -p 85 -t $name:Console
+        tmux split-window -h -p 90 -t $name:Console
         tmux select-pane -t $name:Console -L
         tmux send-keys -t $name:Console C-c 'tree -d -L 3' C-m
         tmux select-pane -t $name:Console -R
         tmux split-window -v -p 10 -t $name:Console
         tmux send-keys -t $name:Console C-c 'git status' C-m
+        tmux select-pane -t $name:Console -U
 
         tmux new-window -t $name:1 -n 'Vim'
         tmux send-keys -t $name:Vim C-c 'nvim .' C-m

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+echo "Input session name: "
+read name
+
+tmux has-session -t "$name" 3>/dev/null
+
+if [ $? != 0 ];then
+    tmux new-session -d -s "$name"
+
+    tmux rename-window -t $name:0 'Console'
+
+    tmux new-window -t $name:1 -n 'Vim'
+    tmux send-keys -t $name:Vim C-c 'nvim .' C-m
+
+    tmux new-window -t $name:2 -n 'Emacs'
+    tmux send-keys -t $name:Emacs C-c 'emacs -nw .' C-m
+    
+    tmux select-window -t $name:0
+fi
+
+
+tmux attach -t $name

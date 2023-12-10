@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+DMEDITOR="nvim"
+
+declare -a options=(
+    "my-config - $HOME/bin/my-config"
+    "my-project - $HOME/bin/start-project"
+    "vim - $HOME/.vimrc"
+    "ranger - $HOME/.config/ranger/rc.conf"
+    "nvim - $HOME/.config/nvim/init.lua"
+    "zshrc - $HOME/.zshrc"
+    "DoomEmacs - $HOME/.doom.d/config.el"
+    #"dwm - $HOME/github/dwm/config.def.h"
+)
+
+choice=$(printf '%s\n' "${options[@]}" | peco)
+
+if [[ "$choice" == "quit" ]]; then
+    echo "Program terminated." && exit 1
+
+elif [ "$choice" ]; then
+    cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+    $DMEDITOR "$cfg"
+else
+    echo "Program terminated." && exit 1
+fi
